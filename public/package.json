@@ -1,9 +1,11 @@
 {
   "name": "my-app",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "main": "main.js",
   "homepage": "./",
+  "author": "reco_luan",
+  "description": "这是第一个 Electron App",
   "dependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -11,27 +13,35 @@
   },
   "build": {
     "appId": "com.leon.my-app",
-    "copyright":"LEON",
-    "productName":"my-app",
+    "copyright": "LEON",
+    "productName": "my-app",
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://192.168.0.226/electron/"
+      }
+    ],
     "mac": {
-      "target": ["dmg","zip"]
+      "target": [
+        "dmg",
+        "zip"
+      ]
     },
     "win": {
-      "target": ["nsis","zip"]
-    },
-    "files": [
-      "./build/index.html",
-      "./build/package.json",
-      "./build/**/*"
-    ]
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    }
   },
   "scripts": {
     "electron": "electron .",
-    "dist": "electron-builder --mac",
+    "dist": "electron-builder --mac --win --x64",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "doc": "vuepress dev docs"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,6 +60,8 @@
   },
   "devDependencies": {
     "electron": "^6.0.4",
-    "electron-builder": "^21.2.0"
+    "electron-builder": "^21.2.0",
+    "electron-updater": "^4.1.2",
+    "vuepress": "1.0.3"
   }
 }

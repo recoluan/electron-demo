@@ -4,8 +4,9 @@
   "private": true,
   "main": "main.js",
   "homepage": "./",
+  "author": "reco_luan",
+  "description": "这是第一个 Electron App",
   "dependencies": {
-    "electron-updater": "^4.1.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
@@ -14,8 +15,8 @@
     "appId": "com.leon.my-app",
     "copyright": "LEON",
     "productName": "my-app",
-    "publish": [ 
-      { 
+    "publish": [
+      {
         "provider": "generic",
         "url": "http://192.168.0.226/electron/"
       }
@@ -35,7 +36,7 @@
   },
   "scripts": {
     "electron": "electron .",
-    "dist": "electron-builder --mac",
+    "dist": "electron-builder --mac --win --x64",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -60,6 +61,7 @@
   "devDependencies": {
     "electron": "^6.0.4",
     "electron-builder": "^21.2.0",
+    "electron-updater": "^4.1.2",
     "vuepress": "1.0.3"
   }
 }

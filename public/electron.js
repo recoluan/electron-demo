@@ -1,5 +1,5 @@
 // 注意这个autoUpdater不是electron中的autoUpdater
-import { autoUpdater } from "electron-updater"
+const { autoUpdater }  = require("electron-updater")
 // 引入electron并创建一个Browserwindow
 const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
@@ -61,7 +61,9 @@ function updateHandle(){
     updateNotAva:'现在使用的就是最新版本，不用更新',
   };
   const os = require('os');
-  autoUpdater.setFeedURL('放最新版本文件的文件夹的服务器地址');
+  sendUpdateMessage('正在检测')
+  autoUpdater.setFeedURL('http://192.168.0.226/electron/');
+  // sendUpdateMessage('放最新版本文件的文件夹的服务器地址')
   autoUpdater.on('error', function(error){
     sendUpdateMessage(message.error)
   });
