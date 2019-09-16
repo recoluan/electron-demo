@@ -38,11 +38,13 @@ function createWindow () {
   }))
   // 加载应用----适用于 react 项目
   // mainWindow.loadURL('./build/index.html');
-  
-  // 打开开发者工具，默认不打开
-  // mainWindow.webContents.openDevTools()
 
   updateHandle()
+
+  mainWindow.webContents.send('message', 123456789)
+  
+  // 打开开发者工具，默认不打开
+  mainWindow.webContents.openDevTools()
 
   // 关闭window时触发下列事件.
   mainWindow.on('closed', function () {
@@ -62,6 +64,7 @@ function updateHandle(){
   };
   const os = require('os');
   sendUpdateMessage('正在检测')
+  console.log(123)
   autoUpdater.setFeedURL('http://192.168.0.226/electron/');
   // sendUpdateMessage('放最新版本文件的文件夹的服务器地址')
   autoUpdater.on('error', function(error){

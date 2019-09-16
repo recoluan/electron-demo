@@ -179,3 +179,8 @@ mainWindow.loadURL(url.format({
 ```
 
 **3. 执行 `yarn dist`**
+
+## 报错
+
+1. https://github.com/electron-userland/electron-builder/issues/2238
+   - 解决：https://www.electron.build/configuration/win#WindowsConfiguration-certificateSubjectName
