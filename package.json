@@ -1,10 +1,11 @@
 {
   "name": "my-app",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "main": "main.js",
   "homepage": "./",
   "dependencies": {
+    "electron-updater": "^4.1.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
@@ -13,6 +14,12 @@
     "appId": "com.leon.my-app",
     "copyright": "LEON",
     "productName": "my-app",
+    "publish": [ 
+      { 
+        "provider": "generic",
+        "url": "http://192.168.0.226/electron/"
+      }
+    ],
     "mac": {
       "target": [
         "dmg",
