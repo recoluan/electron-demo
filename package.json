@@ -32,13 +32,12 @@
       "target": [
         "nsis",
         "zip"
-      ],
-      "certificateSubjectName": ""
+      ]
     }
   },
   "scripts": {
     "electron": "electron .",
-    "dist": "electron-builder --mac --win --x64",
+    "dist": "electron-builder --mac",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -1,7 +1,7 @@
 // 注意这个autoUpdater不是electron中的autoUpdater
 const { autoUpdater }  = require("electron-updater")
 // 引入electron并创建一个Browserwindow
-const {app, BrowserWindow, ipcMain} = require('electron')
+const {app, BrowserWindow, ipcMain, dialog} = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -28,7 +28,17 @@ app.on('activate', function () {
 
 function createWindow () {
   //创建浏览器窗口,宽高自定义具体大小你开心就好
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({
+    width: 800, 
+    height: 600,
+    webPreferences: {
+      javascript: true,
+      plugins: true,
+      nodeIntegration: false, // 不集成 Nodejs
+      webSecurity: false,
+      preload: path.join(__dirname, './public/preload.js') // 但预加载的 js 文件内仍可以使用 Nodejs 的 API
+    }
+  })
 
   // 加载应用-----  electron-quick-start中默认的加载入口
   mainWindow.loadURL(url.format({
@@ -39,9 +49,7 @@ function createWindow () {
   // 加载应用----适用于 react 项目
   // mainWindow.loadURL('./build/index.html');
 
-  updateHandle()
-
-  mainWindow.webContents.send('message', 123456789)
+  // updateHandle()
   
   // 打开开发者工具，默认不打开
   mainWindow.webContents.openDevTools()
@@ -51,6 +59,11 @@ function createWindow () {
     mainWindow = null
   })
 }
+
+ipcMain.on('getUpdate', () => {
+  console.log(2)
+  updateHandle()
+})
 
 // 你可以在这个脚本中续写或者使用require引入独立的js文件.   
 
@@ -64,9 +77,8 @@ function updateHandle(){
   };
   const os = require('os');
   sendUpdateMessage('正在检测')
-  console.log(123)
   autoUpdater.setFeedURL('http://192.168.0.226/electron/');
-  // sendUpdateMessage('放最新版本文件的文件夹的服务器地址')
+  sendUpdateMessage('放最新版本文件的文件夹的服务器地址')
   autoUpdater.on('error', function(error){
     sendUpdateMessage(message.error)
   });
@@ -97,7 +109,12 @@ function updateHandle(){
 }
 
 // 通过main进程发送事件给renderer进程，提示更新信息
-// mainWindow = new BrowserWindow()
 function sendUpdateMessage(text){
-  mainWindow.webContents.send('message', text)
+  console.log('-------------', text)
+  mainWindow.webContents.send('updateInfo', text)
+  dialog.showMessageBox({
+    type:'info',
+    title: 'message',
+    message: text,
+  })
 }
