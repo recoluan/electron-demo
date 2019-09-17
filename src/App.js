@@ -11,7 +11,6 @@ class App extends React.Component {
   }
 
   getUpdate () {
-    console.log('0234')
     window.electron.ipcRenderer.send('getUpdate')
   }
   render () {

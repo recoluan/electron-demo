@@ -42,7 +42,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "doc": "vuepress dev docs"
+    "doc": "vuepress dev docs",
+    "doc-build": "vuepress build docs"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -62,6 +63,7 @@
   "devDependencies": {
     "electron": "^6.0.4",
     "electron-builder": "^21.2.0",
-    "vuepress": "1.0.3"
+    "vuepress": "1.0.3",
+    "vuepress-theme-reco": "1.0.8-alpha.5"
   }
 }

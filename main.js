@@ -61,7 +61,6 @@ function createWindow () {
 }
 
 ipcMain.on('getUpdate', () => {
-  console.log(2)
   updateHandle()
 })
 
