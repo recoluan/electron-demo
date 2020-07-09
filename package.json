@@ -61,7 +61,7 @@
     ]
   },
   "devDependencies": {
-    "electron": "^6.0.4",
+    "electron": "^9.1.0",
     "electron-builder": "^21.2.0",
     "vuepress": "1.0.3",
     "vuepress-theme-reco": "1.0.8-alpha.5"
